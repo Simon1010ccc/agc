@@ -47,24 +47,24 @@
     async function login() {
     	var parentValue = getQueryString('p');
     	
-    	// 实例�?
+    	// å®ä¾å?
 		window.web3 = new Web3(ethereum);
 		var web3 = window.web3;
 		
 		//alert(web3.version);
 	
-		// 检测MetaMask
+		// æ£æµMetaMask
 		//if (web3.currentProvider.isMetaMask == true) {
-		//	//console.log('metamask 可用');
+		//	//console.log('metamask å¯ç¨');
 		//} else {
-		//	alert('metamask 不可�?);
+		//	alert('metamask ä¸å¯ç?);
 		//}
 		
 		initContract();
 	
     	let accounts;
     	try{
-			accounts = await ethereum.enable();//PC上拉取钱包授�?
+			accounts = await ethereum.enable();//PCä¸æåé±åææ?
 		}catch(error){
 			accounts = await web3.eth.getAccounts();
 		}
@@ -359,7 +359,7 @@
 	}
 
 </script>
-<script src='AGCDapp.max.end.js?v=4' loader='laya'></script>
+<script src='AGCDapp.max.end.js?v=5' loader='laya'></script>
 
 </body>
 </html>
