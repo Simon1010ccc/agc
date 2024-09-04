@@ -15910,7 +15910,8 @@ var HallScreen=(function(_super){
 		this.myB.y=5;
 		this.myB.on("click",this,this.myBHandler);
 		this.myB.icon.gray=true;
-		this.pledgeBHandler();
+		this.myBHandler();
+		this.bottomMenu.visible=false;
 	}
 
 	__class(HallScreen,'com.cocoadd.HallScreen',_super);
@@ -17392,14 +17393,19 @@ var PledgeOrderLuckLpItem=(function(_super){
 		if(state==1){
 			this.getPriseB.visible=false;
 		};
+		var t=0;
 		var nowDay=parseInt(new Date().getTime()/(1000*60*60*24)+"");
 		for(var i=lastGetPriseDay;i<nowDay;i++){
-			getPrice(this,i);
+			Laya.timer.once((t++)*100,this,this.onceHandler,[i],false);
 		}
 	}
 
 	__class(PledgeOrderLuckLpItem,'com.cocoadd.my.PledgeOrderLuckLpItem',_super);
 	var __proto=PledgeOrderLuckLpItem.prototype;
+	__proto.onceHandler=function(i){
+		getPrice(this,i);
+	}
+
 	__proto.getPriceSuccess=function(obj,num){
 		obj.currGetPriceNum+=obj.pledgeUSDTAmount/365/num;
 		obj.getPriseB.titleT.text=Number(obj.currGetPriceNum).toFixed(3)+"-GetPrise";
